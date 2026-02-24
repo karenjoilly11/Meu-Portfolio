@@ -75,7 +75,7 @@ const Hero = ({ language }) => {
             
             <div className="relative w-full h-full rounded-full p-1 border-2 border-white/10 bg-cosmic-light z-10 overflow-hidden shadow-2xl">
               <img 
-                src="https://via.placeholder.com/400x400/0f0728/22d3ee?text=Sua+Foto+Aqui" 
+                src="\img\icone-perfil.jpg" 
                 alt="Luiz Fernando" 
                 className="w-full h-full object-cover rounded-full"
               />
