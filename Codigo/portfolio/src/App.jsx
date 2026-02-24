@@ -1,35 +1,53 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
+import About from './components/About';
+import Projects from './components/Projects';
+import Experience from './components/Experience';
+import Music from './components/Music';
+import Contact from './components/Contact';
+import Footer from './components/Footer';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [language, setLanguage] = useState('pt');
+
+  const toggleLanguage = () => {
+    setLanguage(prevLang => prevLang === 'pt' ? 'en' : 'pt');
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="relative font-sans min-h-screen selection:bg-neon-cyan/30 selection:text-white text-slate-200">
+      
+      {/* 🌌 FUNDO GLOBAL FIXO (Aceternity Grid) 🌌 */}
+      {/* Este container fica travado no fundo (z-0) e não interfere nos cliques (pointer-events-none) */}
+      <div className="fixed inset-0 z-0 bg-cosmic-dark pointer-events-none">
+        
+        {/* A Grade Cibernética */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:24px_32px]"></div>
+        
+        {/* Máscara radial para a grade sumir nas bordas e dar uma sensação de profundidade/holofote */}
+        <div className="absolute inset-0 bg-cosmic-dark [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,transparent_20%,black_100%)]"></div>
+        
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+
+      {/* 🚀 CONTEÚDO DO SITE (z-10) rolando suavemente por cima do fundo 🚀 */}
+      <div className="relative z-10 flex flex-col min-h-screen">
+        <Navbar language={language} toggleLanguage={toggleLanguage} />
+        
+        <main className="flex-grow">
+          <Hero language={language} />
+          <About language={language} />
+          <Projects language={language} />
+          <Experience language={language} />
+          <Music language={language} />
+          <Contact language={language} />
+        </main>
+        
+        <Footer />
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+
+    </div>
+  );
 }
 
-export default App
+export default App;
