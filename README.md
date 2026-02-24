@@ -49,10 +49,9 @@ Os wireframes do sistema foram desenvolvidos no Figma.
 
 ## Tecnologias Previstas
 
-* HTML5
-* CSS3
-* JavaScript
 * React
+* Css
+* Tailwind
 
 ## Ferramentas Utilizadas
 * Git e GitHub
@@ -78,17 +77,18 @@ Certifique-se de ter as seguintes ferramentas instaladas:
    git clone 
 
 2. Acesse a pasta do projeto:
+   cd codigo
    cd portfolio
    
-3. Instale as dependências:
+4. Instale as dependências:
    ```bash
    npm install
    
-4. Execute o projeto
+5. Execute o projeto
    ```bash
-   npm start
+   npm run dev
 
-5. O sistema estará disponível em: http://localhost:3000
+6. O sistema estará disponível em: http://localhost:3000
 
 ## Deploy 
 
