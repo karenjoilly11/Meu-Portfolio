@@ -115,20 +115,20 @@ Certifique-se de ter as seguintes ferramentas instaladas:
    ```bash
    cd codigo
    cd portfolio
-   
-4. Instale as dependências:
+
+3. Instale as dependências:
    ```bash
    npm install
 
-5. Garantir o React Router e Icons
+4. Garantir o React Router e Icons
   ```bash
    npm install react-router-dom react-icons
    
-6. Execute o projeto
+5. Execute o projeto
    ```bash
    npm run dev
 
-7. O sistema estará disponível em: http://localhost:5173
+6. O sistema estará disponível em: http://localhost:5173
 
 ## Deploy 
 
