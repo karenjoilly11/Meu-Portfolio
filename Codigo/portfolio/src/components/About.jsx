@@ -29,7 +29,7 @@ const About = ({ language }) => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="bg-black/30 backdrop-blur-xl border border-white/10 p-8 md:p-14 rounded-3xl shadow-2xl relative overflow-hidden"
+          className="bg-black/30 backdrop-blur-md bg-black/60 border border-white/10 p-8 md:p-14 rounded-3xl shadow-2xl relative overflow-hidden"
         >
           {/* Brilho decorativo de fundo */}
           <div className="absolute top-0 right-0 w-64 h-64 bg-neon-cyan/5 rounded-full blur-3xl -z-10 translate-x-1/2 -translate-y-1/2"></div>

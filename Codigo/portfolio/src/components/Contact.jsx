@@ -154,7 +154,7 @@ const Contact = ({ language }) => {
           <form
             ref={form}
             onSubmit={sendEmail}
-            className="bg-black/40 backdrop-blur-2xl border border-white/10 p-8 md:p-12 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] relative z-10"
+            className="bg-black/40 backdrop-blur-md bg-black/60 border border-white/10 p-8 md:p-12 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] relative z-10"
           >
             <div className="space-y-6">
               <div>

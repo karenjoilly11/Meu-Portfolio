@@ -105,7 +105,7 @@ const Experience = ({ language }) => {
       <div className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row gap-12 items-center">
         
         {/* Painel Esquerdo: O Grafo Dinâmico (Glassmorphism) */}
-        <div className="w-full lg:w-1/2 relative h-[500px] md:h-[650px] bg-black/30 border border-white/10 rounded-3xl backdrop-blur-xl overflow-hidden shadow-2xl group">
+        <div className="w-full lg:w-1/2 relative h-[500px] md:h-[650px] bg-black/30 border border-white/10 rounded-3xl backdrop-blur-md bg-black/50 overflow-hidden shadow-2xl group">
           
           {/* Radar Decorativo */}
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-20">
@@ -217,7 +217,7 @@ const Experience = ({ language }) => {
             <div className="w-24 h-2 bg-gradient-to-r from-neon-cyan to-neon-purple mt-6 rounded-full mx-auto lg:mx-0 shadow-[0_0_15px_rgba(34,211,238,0.5)]"></div>
           </motion.div>
 
-          <div className="relative w-full bg-black/40 backdrop-blur-2xl border border-white/10 rounded-[2rem] overflow-hidden min-h-[520px] shadow-[0_20px_50px_rgba(0,0,0,0.4)]">
+          <div className="relative w-full bg-black/40 backdrop-blur-md bg-black/60 border border-white/10 rounded-[2rem] overflow-hidden min-h-[520px] shadow-[0_20px_50px_rgba(0,0,0,0.4)]">
             {/* Terminal Header */}
             <div className="bg-white/5 px-6 py-4 border-b border-white/10 flex justify-between items-center">
               <div className="flex items-center gap-3">
@@ -244,7 +244,7 @@ const Experience = ({ language }) => {
                     className="relative z-10 flex flex-col h-full"
                   >
                     <div className="flex justify-between items-start mb-8">
-                      <div className={`w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center border ${selectedNode.borderGlow} ${selectedNode.glow} backdrop-blur-xl`}>
+                      <div className={`w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center border ${selectedNode.borderGlow} ${selectedNode.glow} backdrop-blur-md bg-black/50`}>
                         <FaCodeBranch className={`text-2xl ${selectedNode.color}`} />
                       </div>
                       <div className="text-right">

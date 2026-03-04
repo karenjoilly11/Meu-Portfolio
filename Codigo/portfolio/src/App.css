@@ -56,7 +56,8 @@ body {
 
 /* ===== PERFORMANCE ===== */
 section {
-  contain: content; /* Isola o layout de cada seção */
+  contain: paint; /* Muito mais leve e eficiente que 'content' para isolamento */
+  will-change: transform; /* Prepara a GPU para animações do Framer Motion */
 }
 
 .text-gradient {
