@@ -1,20 +1,73 @@
-import { useState, useMemo } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   FaGithub, FaSearch, FaArrowLeft, FaCode, FaServer, FaLayerGroup,
   FaReact, FaPython, FaNodeJs, FaJava, FaDocker 
 } from "react-icons/fa";
-import { SiSpringboot, SiMysql, SiFlask, SiTailwindcss, SiJavascript } from "react-icons/si";
+import { 
+  SiSpringboot, SiMysql, SiJavascript, SiTypescript, SiNextdotjs 
+} from "react-icons/si";
 import { Link } from "react-router-dom";
 import { CardContainer, CardBody, CardItem } from "./ui/3d-card";
 
+// ==========================================
+// MÁQUINA DE ESTADOS DO CARROSSEL
+// ==========================================
+const ImageCarousel = ({ images, altText }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    if (!images || images.length <= 1) return;
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 3000); 
+    return () => clearInterval(interval);
+  }, [images]);
+
+  if (!images || images.length === 0) {
+    return <img src="https://via.placeholder.com/600x400/0f0728/38bdf8?text=Sem+Imagem" className="absolute inset-0 w-full h-full object-cover" alt="Placeholder" />;
+  }
+
+  return (
+    <div className="relative w-full h-full overflow-hidden rounded-xl bg-black/50 group/carousel">
+      <AnimatePresence mode="wait">
+        <motion.img
+          key={currentIndex}
+          src={images[currentIndex]}
+          initial={{ opacity: 0, scale: 1.05 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
+          className="absolute inset-0 w-full h-full object-cover opacity-90 group-hover/card:opacity-100 transition-opacity duration-300"
+          alt={`${altText} - frame ${currentIndex + 1}`}
+          onError={(e) => { e.target.src = `https://via.placeholder.com/600x400/0f0728/38bdf8?text=Erro`; }}
+        />
+      </AnimatePresence>
+
+      {images.length > 1 && (
+        <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1.5 z-20 bg-black/40 px-2 py-1 rounded-full backdrop-blur-md border border-white/10">
+          {images.map((_, idx) => (
+            <div key={idx} className={`h-1.5 rounded-full transition-all duration-300 ${idx === currentIndex ? 'w-4 bg-neon-cyan' : 'w-1.5 bg-white/40'}`} />
+          ))}
+        </div>
+      )}
+      <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/80 to-transparent pointer-events-none"></div>
+    </div>
+  );
+};
+
+// ==========================================
+// COMPONENTE PRINCIPAL (GALERIA)
+// ==========================================
 const AllProjects = ({ language }) => {
   const [filter, setFilter] = useState("all");
   const [searchTerm, setSearchTerm] = useState("");
 
-  // Mapeamento de Ícones Core
+  // Dicionário de Ícones Atualizado
   const techIcons = {
     "React": <FaReact className="text-[#61DAFB]" />,
+    "Next.js": <SiNextdotjs className="text-white" />,
+    "TypeScript": <SiTypescript className="text-[#3178C6]" />,
     "Python": <FaPython className="text-[#3776AB]" />,
     "Node.js": <FaNodeJs className="text-[#339933]" />,
     "Java": <FaJava className="text-[#007396]" />,
@@ -24,36 +77,71 @@ const AllProjects = ({ language }) => {
     "JS": <SiJavascript className="text-[#F7DF1E]" />
   };
 
-  const allProjects = [
-    {
-      id: 1,
-      title: "Re.use - Plataforma Sustentável",
-      category: "back",
-      description: "Plataforma digital para economia circular têxtil. Fluxo completo de cadastro e redistribuição.",
-      tech: ["Java", "Spring Boot", "MySQL", "Node.js"],
-      github: "https://github.com/...",
-      image: "/reuse-demo.webp",
-    },
-    {
-      id: 2,
-      title: "IA Cirúrgica (Pesquisa)",
-      category: "full",
-      description: "Visão computacional (YOLOv8n) para identificar instrumentos cirúrgicos em tempo real.",
-      tech: ["Python", "Flask", "React", "Docker"],
-      github: "https://github.com/...",
-      image: "/ia-cirurgica.webp",
-    },
-    {
-      id: 3,
-      title: "RoomBookings - Reservas",
-      category: "back",
-      description: "Sistema ágil para gestão e controle de reservas de salas de reunião.",
-      tech: ["Java", "MySQL", "POO"],
-      github: "https://github.com/...",
-      image: "/roombookings.webp",
-    }
-  ];
+  // Matriz de Dados Bilíngue com Categorias
+  const allProjectsData = {
+    pt: [
+      {
+        id: 1,
+        title: "Re.use - Plataforma Sustentável",
+        category: "full",
+        description: "Plataforma digital para economia circular têxtil. Fluxo completo de cadastro, triagem e redistribuição.",
+        tech: ["Java", "Spring Boot", "MySQL", "Node.js"],
+        github: "https://github.com/ICEI-PUC-Minas-PMGES-TI/pmg-es-2025-1-ti2-3687100-brecho-re-use",
+        images: ["/img/Re.use/image.png", "/img/Re.use/image2.png", "/img/Re.use/image3.png", "/img/Re.use/image4.png", "/img/Re.use/image5.png"],
+      },
+      {
+        id: 2,
+        title: "IA Cirúrgica (Pesquisa)",
+        category: "full",
+        description: "Visão computacional (YOLOv8n) para identificar instrumentos cirúrgicos em tempo real.",
+        tech: ["Python", "Flask", "React", "Docker"],
+        github: "https://github.com/ICEI-PUC-Minas-PPLES-TI/plu-es-2025-2-extensao-software-saude-fhsfa",
+        images: ["/img/ProjetoExtensao/imagem3.jpeg", "/img/ProjetoExtensao/imagem4.jpeg", "/img/ProjetoExtensao/imagem5.jpeg"],
+      },
+      {
+        id: 3,
+        title: "Detalhes em Prata - E-commerce",
+        category: "full",
+        description: "Aplicação full-stack para e-commerce de joias. Back-end robusto construído com Java e Spring Boot.",
+        tech: ["Java", "Spring Boot", "TypeScript", "Next.js"],
+        github: "https://github.com/LuizFMoreira/seu-repositorio-joalheria",
+        images: ["/img/detalhesPrata/image.png", "/img/detalhesPrata/image2.png", "/img/detalhesPrata/image3.png"],
+      }
+    ],
+    en: [
+      {
+        id: 1,
+        title: "Re.use - Sustainable Platform",
+        category: "full",
+        description: "Digital platform for textile circular economy. Complete flow for registration, sorting, and redistribution.",
+        tech: ["Java", "Spring Boot", "MySQL", "Node.js"],
+        github: "https://github.com/ICEI-PUC-Minas-PMGES-TI/pmg-es-2025-1-ti2-3687100-brecho-re-use",
+        images: ["/img/Re.use/image.png", "/img/Re.use/image2.png", "/img/Re.use/image3.png", "/img/Re.use/image4.png", "/img/Re.use/image5.png"],
+      },
+      {
+        id: 2,
+        title: "Surgical AI (Research)",
+        category: "full",
+        description: "Computer vision (YOLOv8n) to identify surgical instruments in real-time.",
+        tech: ["Python", "Flask", "React", "Docker"],
+        github: "https://github.com/ICEI-PUC-Minas-PPLES-TI/plu-es-2025-2-extensao-software-saude-fhsfa",
+        images: ["/img/ProjetoExtensao/imagem3.jpeg", "/img/ProjetoExtensao/imagem4.jpeg", "/img/ProjetoExtensao/imagem5.jpeg"],
+      },
+      {
+        id: 3,
+        title: "Detalhes em Prata - E-commerce",
+        category: "full",
+        description: "Full-stack jewelry e-commerce application. Robust back-end built with Java and Spring Boot.",
+        tech: ["Java", "Spring Boot", "TypeScript", "Next.js"],
+        github: "https://github.com/LuizFMoreira/seu-repositorio-joalheria",
+        images: ["/img/detalhesPrata/image.png", "/img/detalhesPrata/image2.png", "/img/detalhesPrata/image3.png"],
+      }
+    ]
+  };
 
+  const allProjects = allProjectsData[language] || allProjectsData['pt'];
+
+  // Lógica de Filtragem Otimizada
   const filteredProjects = useMemo(() => {
     return allProjects.filter((p) => {
       const matchesFilter = filter === "all" || p.category === filter;
@@ -99,14 +187,14 @@ const AllProjects = ({ language }) => {
                 <div className={`text-3xl mb-2 transition-transform ${searchTerm.toLowerCase() === name.toLowerCase() ? 'scale-110' : 'grayscale group-hover:grayscale-0'}`}>
                   {icon}
                 </div>
-                <span className="text-[10px] font-bold tracking-tight">{name}</span>
+                <span className="text-[10px] font-bold tracking-tight text-center">{name}</span>
               </button>
             ))}
           </div>
         </div>
 
         {/* Filtros de Categoria e Busca */}
-        <div className="flex flex-col lg:flex-row gap-6 mb-16 items-center justify-between bg-white/5 p-4 rounded-3xl border border-white/10 backdrop-blur-xl">
+        <div className="flex flex-col lg:flex-row gap-6 mb-16 items-center justify-between bg-white/5 p-4 rounded-3xl border border-white/10 backdrop-blur-md">
           <div className="flex flex-wrap gap-2 p-1 bg-black/40 rounded-2xl">
             {[
               { id: 'all', label: 'Todos', icon: <FaLayerGroup /> },
@@ -151,14 +239,19 @@ const AllProjects = ({ language }) => {
                 transition={{ duration: 0.4 }}
               >
                 <CardContainer className="w-full h-full">
-                  <CardBody className="bg-black/40 backdrop-blur-md border border-white/10 hover:border-neon-cyan/40 w-full h-full rounded-3xl p-6 flex flex-col justify-between transition-all">
+                  <CardBody className="bg-black/40 backdrop-blur-md border border-white/10 hover:border-neon-cyan/40 w-full h-full rounded-3xl p-6 flex flex-col justify-between transition-all group/card">
                     <div>
                       <CardItem translateZ="50" className="text-xl font-bold text-white mb-2">{project.title}</CardItem>
-                      <CardItem translateZ="60" as="p" className="text-slate-400 text-sm mb-6 line-clamp-2">{project.description}</CardItem>
+                      <CardItem translateZ="60" as="p" className="text-slate-400 text-sm mb-6 line-clamp-2 min-h-[40px]">{project.description}</CardItem>
+                      
+                      {/* Carrossel integrado perfeitamente no Z-index da Galeria */}
                       <CardItem translateZ="100" className="w-full mb-6">
-                        <img src={project.image} alt={project.title} className="h-44 w-full object-cover rounded-2xl" />
+                        <div className="h-44 w-full rounded-2xl relative border border-white/5 overflow-hidden">
+                           <ImageCarousel images={project.images} altText={project.title} />
+                        </div>
                       </CardItem>
                     </div>
+
                     <div className="space-y-6">
                       <CardItem translateZ="30" className="flex flex-wrap gap-2">
                         {project.tech.map((t) => (
@@ -167,8 +260,9 @@ const AllProjects = ({ language }) => {
                           </span>
                         ))}
                       </CardItem>
+                      
                       <CardItem translateZ="50" className="w-full">
-                        <a href={project.github} target="_blank" className="flex items-center justify-center gap-2 w-full py-3 bg-white/5 border border-white/10 text-white font-bold rounded-xl hover:bg-neon-cyan hover:text-black transition-all">
+                        <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 w-full py-3 bg-white/5 border border-white/10 text-white font-bold rounded-xl hover:bg-neon-cyan hover:text-black transition-all">
                           <FaGithub size={18} /> GitHub
                         </a>
                       </CardItem>
