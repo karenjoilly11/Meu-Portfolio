@@ -70,7 +70,8 @@ const Contact = ({ language }) => {
     }
 
     setStatus("loading");
-    // Lembre-se de colocar suas chaves do EmailJS aqui
+
+    // Primeiro: enviar para você (template original)
     emailjs
       .sendForm(
         "service_wo4vk2b", // ID do serviço
@@ -79,11 +80,33 @@ const Contact = ({ language }) => {
         "wx5kVH1zKLNd5FhEP", // Chave pública
       )
       .then(
-        () => {
-          setStatus("success");
-          e.target.reset();
+        (response) => {
+          // Segundo: enviar confirmação para o remetente
+          emailjs
+            .send(
+              "service_wo4vk2b",
+              "template_lvkf6yi",
+              {
+                user_name: form.current.user_name.value,
+                user_email: form.current.user_email.value,
+                message: form.current.message.value,
+                time: new Date().toLocaleString(),
+              },
+              "wx5kVH1zKLNd5FhEP",
+            )
+            .then(
+              () => {
+                setStatus("success");
+                e.target.reset();
+              },
+              (error) => {
+                console.log(error);
+                setStatus("error");
+              },
+            );
         },
-        () => {
+        (error) => {
+          console.log(error);
           setStatus("error");
         },
       );
@@ -92,18 +115,22 @@ const Contact = ({ language }) => {
   const socialLinks = [
     {
       icon: FaLinkedin,
-      href: "https://linkedin.com/in/seu-linkedin",
+      href: "https://www.linkedin.com/in/karenjoilly/",
       label: "LinkedIn",
     },
-    { icon: FaGithub, href: "https://github.com/seu-github", label: "GitHub" },
+    {
+      icon: FaGithub,
+      href: "https://github.com/karenjoilly11/karenjoilly",
+      label: "GitHub",
+    },
     {
       icon: FaWhatsapp,
-      href: "https://wa.me/5531999999999",
+      href: "https://wa.me/5531975684844",
       label: "WhatsApp",
     },
     {
       icon: FaEnvelope,
-      href: "mailto:contato@luizfernando.dev",
+      href: "mailto:karen_joilly@hotmail.com",
       label: "Email",
     },
   ];
@@ -111,7 +138,6 @@ const Contact = ({ language }) => {
   return (
     <section id="contato" className="py-32 px-6 relative z-10 overflow-hidden">
       <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
-        
         {/* Coluna da Esquerda: Textos e Links */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -138,7 +164,10 @@ const Contact = ({ language }) => {
                 rel="noopener noreferrer"
                 className="w-14 h-14 flex items-center justify-center rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 text-white hover:text-neon-cyan hover:border-neon-cyan hover:bg-neon-cyan/10 transition-all duration-300 hover:-translate-y-1.5 shadow-lg group"
               >
-                <link.icon size={24} className="group-hover:scale-110 transition-transform" />
+                <link.icon
+                  size={24}
+                  className="group-hover:scale-110 transition-transform"
+                />
               </a>
             ))}
           </div>
@@ -202,18 +231,26 @@ const Contact = ({ language }) => {
                 disabled={status === "loading"}
                 className="w-full bg-white/10 text-white border border-neon-cyan hover:bg-neon-cyan hover:text-black font-bold py-4 px-8 rounded-xl transition-all duration-300 disabled:opacity-50 mt-4 shadow-lg flex justify-center items-center"
               >
-                {status === "loading" ? <FaSpinner className="animate-spin text-xl" /> : text.buttonText}
+                {status === "loading" ? (
+                  <FaSpinner className="animate-spin text-xl" />
+                ) : (
+                  text.buttonText
+                )}
               </button>
-              
+
               {/* Feedback States */}
               {status === "success" && (
                 <div className="flex items-center gap-2 text-emerald-400 mt-4 bg-emerald-400/10 p-3 rounded-lg border border-emerald-400/20 justify-center">
-                  <FaCheckCircle /> <span className="text-sm font-semibold">{text.successMsg}</span>
+                  <FaCheckCircle />{" "}
+                  <span className="text-sm font-semibold">
+                    {text.successMsg}
+                  </span>
                 </div>
               )}
               {status === "error" && (
                 <div className="flex items-center gap-2 text-red-400 mt-4 bg-red-400/10 p-3 rounded-lg border border-red-400/20 justify-center">
-                  <FaExclamationCircle /> <span className="text-sm font-semibold">{text.errorMsg}</span>
+                  <FaExclamationCircle />{" "}
+                  <span className="text-sm font-semibold">{text.errorMsg}</span>
                 </div>
               )}
             </div>

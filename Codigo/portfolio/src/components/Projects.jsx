@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaArrowRight, FaGithub } from "react-icons/fa";
-import { Link } from "react-router-dom"; 
+import { Link } from "react-router-dom";
 import { CardContainer, CardBody, CardItem } from "./ui/3d-card";
 
 // ==========================================
@@ -13,10 +13,10 @@ const ImageCarousel = ({ images, altText }) => {
   useEffect(() => {
     // Se não houver imagens ou for apenas uma, não inicia o loop
     if (!images || images.length <= 1) return;
-    
+
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 3000); 
+    }, 3000);
 
     return () => clearInterval(interval);
   }, [images]);
@@ -54,16 +54,16 @@ const ImageCarousel = ({ images, altText }) => {
       {images.length > 1 && (
         <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1.5 z-20 bg-black/40 px-2 py-1 rounded-full backdrop-blur-md border border-white/10">
           {images.map((_, idx) => (
-            <div 
-              key={idx} 
+            <div
+              key={idx}
               className={`h-1.5 rounded-full transition-all duration-300 ${
-                idx === currentIndex ? 'w-4 bg-neon-cyan' : 'w-1.5 bg-white/40'
+                idx === currentIndex ? "w-4 bg-neon-cyan" : "w-1.5 bg-white/40"
               }`}
             />
           ))}
         </div>
       )}
-      
+
       <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/80 to-transparent pointer-events-none"></div>
     </div>
   );
@@ -77,96 +77,101 @@ const Projects = ({ language }) => {
     pt: [
       {
         id: 1,
-        title: "Re.use - Plataforma Sustentável",
-        description: "Plataforma digital para economia circular têxtil. Fluxo completo de cadastro, triagem e redistribuição.",
-        tech: ["Java", "Spring Boot", "MySQL", "Node.js"],
-        github: "https://github.com/ICEI-PUC-Minas-PMGES-TI/pmg-es-2025-1-ti2-3687100-brecho-re-use",
-        images: [
-          "/img/Re.use/image.png", 
-          "/img/Re.use/image2.png", 
-          "/img/Re.use/image3.png", 
-          "/img/Re.use/image4.png", 
-          "/img/Re.use/image5.png"
-        ],
-        alt: "Demonstração da plataforma Re.use",
+        title: "Meu Portfólio Profissional",
+        description:
+          "Website de portfólio desenvolvido com React e Tailwind CSS para apresentar minha trajetória, projetos acadêmicos e habilidades em engenharia de software.",
+        tech: ["React", "TypeScript", "Next.js", "Tailwind CSS"],
+        github: "https://github.com/karenjoilly11/Meu-Portfolio",
+        images: ["/img/portfolio/portfolio-imagem-1.jpeg"],
+        alt: "Interface do portfólio de Karen Joilly",
       },
       {
         id: 2,
-        title: "IA Cirúrgica (Pesquisa)",
-        description: "Aplicação web com visão computacional (YOLOv8n) para identificar instrumentos cirúrgicos em tempo real.",
-        tech: ["Python", "Flask", "React", "YOLOv8n", "Docker"],
-        github: "https://github.com/ICEI-PUC-Minas-PPLES-TI/plu-es-2025-2-extensao-software-saude-fhsfa",
+        title: "Martin Psicólogo - Sistema de Gestão",
+        description:
+          "Aplicação web para gestão de consultório psicológico com agendamento de consultas e controle financeiro. Desenvolvido em equipe na PUC Minas com metodologias ágeis, integrando back-end robusto com front-end dinâmico.",
+        tech: ["React", "Node.js", "Java", "Spring Boot", "MySQL"],
+        github:
+          "https://github.com/ICEI-PUC-Minas-PMGES-TI/pmg-es-2025-2-ti3-9545100-psicologo.git",
         images: [
-          "/img/ProjetoExtensao/imagem3.jpeg", 
-          "/img/ProjetoExtensao/imagem4.jpeg",
-          "/img/ProjetoExtensao/imagem5.jpeg" 
+          "/img/martin-psicologo-ti3/martin-psicologo-image-1.jpeg",
+          "/img/martin-psicologo-ti3/martin-psicologo-image-2.jpeg",
+          "/img/martin-psicologo-ti3/martin-psicologo-image-7.jpeg",
+          "/img/martin-psicologo-ti3/martin-psicologo-image-12.jpeg",
+          "/img/martin-psicologo-ti3/martin-psicologo-image-11.jpeg",
+          "/img/martin-psicologo-ti3/martin-psicologo-image-6.jpeg",
         ],
-        alt: "Detecção de instrumentos cirúrgicos",
+        alt: "Interface do sistema de gestão Martin Psicólogo",
       },
       {
         id: 3,
-        title: "Detalhes em Prata - E-commerce",
-        description: "Aplicação full-stack para e-commerce de joias. Back-end robusto construído com Java e Spring Boot, integrado a uma interface moderna, reativa e tipada utilizando TypeScript e Next.js.",
-        tech: ["Java", "Spring Boot", "TypeScript", "Next.js"],
-        github: "https://github.com/LuizFMoreira/seu-repositorio-joalheria",
+        title: "GameHub - Plataforma de Jogos",
+        description:
+          "Plataforma interativa para busca e avaliação de jogos. Sistema com cadastro de usuários, perfis personalizados e avaliações colaborativas. Desenvolvido com Java Spring Boot no backend e frontend integrado.",
+        tech: ["Java", "Spring Boot", "MySQL", "React", "TypeScript"],
+        github:
+          "https://github.com/ICEI-PUC-Minas-PMGES-TI/pmg-es-2025-2-ti3-9545100-gamehub",
         images: [
-          "/img/detalhesPrata/image.png", 
-          "/img/detalhesPrata/image2.png", 
-          "/img/detalhesPrata/image3.png"
+          "/img/gamehub-ti2/gamehub-image-1.jpeg",
+          "/img/gamehub-ti2/gamehub-image-3.jpeg",
+          "/img/gamehub-ti2/gamehub-image-2.jpeg",
         ],
-        alt: "Interface da loja Detalhes em Prata",
-      }
+        alt: "Interface da plataforma de jogos GameHub",
+      },
     ],
     en: [
       {
         id: 1,
-        title: "Re.use - Sustainable Platform",
-        description: "Digital platform for textile circular economy. Complete flow for registration, sorting, and redistribution.",
-        tech: ["Java", "Spring Boot", "MySQL", "Node.js"],
-        github: "https://github.com/ICEI-PUC-Minas-PMGES-TI/pmg-es-2025-1-ti2-3687100-brecho-re-use",
-        images: [
-          "/img/Re.use/image.png", 
-          "/img/Re.use/image2.png", 
-          "/img/Re.use/image3.png", 
-          "/img/Re.use/image4.png", 
-          "/img/Re.use/image5.png"
-        ],
-        alt: "Re.use platform demonstration",
+        title: "My Professional Portfolio",
+        description:
+          "Portfolio website developed with React and Tailwind CSS to showcase my journey, academic projects, and software engineering skills.",
+        tech: ["React", "TypeScript", "Next.js", "Tailwind CSS"],
+        github: "https://github.com/karenjoilly11/Meu-Portfolio",
+        images: ["/img/portfolio/portfolio-imagem-1.jpeg"],
+        alt: "Karen Joilly portfolio interface",
       },
       {
         id: 2,
-        title: "Surgical AI (Research)",
-        description: "Web application with computer vision (YOLOv8n) to identify surgical instruments in real-time.",
-        tech: ["Python", "Flask", "React", "YOLOv8n", "Docker"],
-        github: "https://github.com/ICEI-PUC-Minas-PPLES-TI/plu-es-2025-2-extensao-software-saude-fhsfa",
+        title: "Martin Psicólogo - Management System",
+        description:
+          "Web application for psychology office management with appointment scheduling and financial control. Team project at PUC Minas using agile methodologies, integrating robust back-end with dynamic front-end.",
+        tech: ["React", "Node.js", "Java", "Spring Boot", "MySQL"],
+        github:
+          "https://github.com/ICEI-PUC-Minas-PMGES-TI/pmg-es-2025-2-ti3-9545100-psicologo.git",
         images: [
-          "/img/ProjetoExtensao/imagem3.jpeg", 
-          "/img/ProjetoExtensao/imagem4.jpeg",
-          "/img/ProjetoExtensao/imagem5.jpeg" 
+          "/img/martin-psicologo-ti3/martin-psicologo-image-1.jpeg",
+          "/img/martin-psicologo-ti3/martin-psicologo-image-2.jpeg",
+          "/img/martin-psicologo-ti3/martin-psicologo-image-7.jpeg",
         ],
-        alt: "Surgical instrument detection",
+        alt: "Martin Psicólogo management system interface",
       },
       {
         id: 3,
-        title: "Detalhes em Prata - E-commerce",
-        description: "Full-stack application for a jewelry e-commerce. Robust back-end built with Java and Spring Boot, integrated with a modern, reactive, and strongly-typed interface using TypeScript and Next.js.",
-        tech: ["Java", "Spring Boot", "TypeScript", "Next.js"],
-        github: "https://github.com/LuizFMoreira/seu-repositorio-joalheria",
+        title: "GameHub - Gaming Platform",
+        description:
+          "Interactive platform for game search and reviews. System with user registration, personalized profiles, and collaborative ratings. Developed with Java Spring Boot backend and integrated frontend.",
+        tech: ["Java", "Spring Boot", "MySQL", "React", "TypeScript"],
+        github:
+          "https://github.com/ICEI-PUC-Minas-PMGES-TI/pmg-es-2025-2-ti3-9545100-gamehub",
         images: [
-          "/img/detalhesPrata/image.png", 
-          "/img/detalhesPrata/image2.png", 
-          "/img/detalhesPrata/image3.png"
+          "/img/gamehub-ti2/gamehub-image-1.jpeg",
+          "/img/gamehub-ti2/gamehub-image-3.jpeg",
+          "/img/gamehub-ti2/gamehub-image-2.jpeg",
         ],
-        alt: "Detalhes em Prata store interface",
-      }
-    ]
+        alt: "GameHub gaming platform interface",
+      },
+    ],
   };
 
-  const projects = projectsData[language] || projectsData['pt'];
-  const sectionTitle = language === "pt" ? "Projetos e Pesquisa." : "Projects & Research.";
+  const projects = projectsData[language] || projectsData["pt"];
+  const sectionTitle =
+    language === "pt" ? "Projetos e Pesquisa." : "Projects & Research.";
 
   return (
-    <section id="projetos" className="py-24 px-6 relative z-10 min-h-screen flex items-center">
+    <section
+      id="projetos"
+      className="py-24 px-6 relative z-10 min-h-screen flex items-center"
+    >
       <div className="max-w-7xl mx-auto w-full">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -186,7 +191,10 @@ const Projects = ({ language }) => {
             <CardContainer key={project.id} className="w-full h-full">
               <CardBody className="bg-black/30 backdrop-blur-md border border-white/10 hover:border-neon-cyan/40 w-full h-full rounded-2xl p-6 flex flex-col justify-between transition-all duration-300 hover:shadow-lg hover:shadow-neon-cyan/20 group/card">
                 <div>
-                  <CardItem translateZ="40" className="text-xl font-bold text-white mb-3">
+                  <CardItem
+                    translateZ="40"
+                    className="text-xl font-bold text-white mb-3"
+                  >
                     {project.title}
                   </CardItem>
 
@@ -201,7 +209,10 @@ const Projects = ({ language }) => {
                   {/* AQUI ESTÁ A INTEGRAÇÃO CORRETA DO CARROSSEL NO EIXO Z */}
                   <CardItem translateZ="80" className="w-full mb-6">
                     <div className="h-44 w-full overflow-hidden rounded-xl border border-white/5 relative">
-                      <ImageCarousel images={project.images} altText={project.alt} />
+                      <ImageCarousel
+                        images={project.images}
+                        altText={project.alt}
+                      />
                     </div>
                   </CardItem>
                 </div>
@@ -230,11 +241,11 @@ const Projects = ({ language }) => {
                     </CardItem>
 
                     <CardItem translateZ={20}>
-                      <Link 
-                        to="/todos-projetos" 
+                      <Link
+                        to="/todos-projetos"
                         className="text-neon-cyan text-xs font-bold flex items-center gap-2 hover:underline group"
                       >
-                        {language === 'pt' ? 'Detalhes' : 'Details'} 
+                        {language === "pt" ? "Detalhes" : "Details"}
                         <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
                       </Link>
                     </CardItem>
@@ -249,11 +260,16 @@ const Projects = ({ language }) => {
         <div className="mt-20 text-center">
           <Link to="/todos-projetos">
             <motion.button
-              whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(34, 211, 238, 0.3)" }}
+              whileHover={{
+                scale: 1.05,
+                boxShadow: "0 0 20px rgba(34, 211, 238, 0.3)",
+              }}
               whileTap={{ scale: 0.95 }}
               className="px-10 py-4 bg-transparent border-2 border-neon-cyan text-neon-cyan font-bold rounded-full hover:bg-neon-cyan hover:text-black transition-all duration-300"
             >
-              {language === "pt" ? "Ver Todos os Projetos" : "View All Projects"}
+              {language === "pt"
+                ? "Ver Todos os Projetos"
+                : "View All Projects"}
             </motion.button>
           </Link>
         </div>

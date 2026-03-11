@@ -105,7 +105,7 @@ const Navbar = ({ language, toggleLanguage }) => {
           {/* Botão de UpLoad do Currículo */}
           <a
             href="/curriculo.pdf"
-            download="LuizFernando_BatistaMoreira_Currículo.pdf"
+            download="Karen_Joilly_Currículo.pdf"
             className="flex items-center gap-2 border border-white/10 bg-white/5 backdrop-blur-md px-3 sm:px-4 py-1.5 rounded-full hover:bg-neon-cyan hover:border-neon-cyan hover:text-black transition-all duration-300 group"
           >
             <FaFileDownload
