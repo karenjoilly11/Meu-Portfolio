@@ -86,7 +86,7 @@ const Navbar = ({ language, toggleLanguage }) => {
             onClick={(e) => handleScrollTo(e, "#home")}
             className="text-xl font-black text-white tracking-tighter hover:opacity-80 transition-opacity"
           >
-            LF<span className="text-neon-cyan animate-pulse">.</span>
+            KJ<span className="text-neon-cyan animate-pulse">.</span>
           </a>
 
           <div className="hidden md:flex gap-8">
