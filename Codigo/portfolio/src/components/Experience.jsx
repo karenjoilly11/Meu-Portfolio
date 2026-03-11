@@ -211,7 +211,7 @@ const Experience = ({ language }) => {
             <div className="absolute w-32 h-32 bg-white/5 rounded-full animate-pulse"></div>
             <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-black/60 border border-white/20 flex flex-col items-center justify-center shadow-2xl backdrop-blur-md relative overflow-hidden">
               <span className="text-2xl font-black text-white tracking-widest relative z-10">
-                LF<span className="text-neon-cyan">.</span>
+                KJ<span className="text-neon-cyan">.</span>
               </span>
               <span className="text-[9px] text-slate-400 font-mono mt-1 relative z-10 tracking-[0.2em] uppercase">
                 System_Root
