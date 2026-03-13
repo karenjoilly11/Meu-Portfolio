@@ -142,6 +142,8 @@ const AllProjects = ({ language }) => {
           "/img/gamehub-ti2/gamehub-image-1.jpeg",
           "/img/gamehub-ti2/gamehub-image-3.jpeg",
           "/img/gamehub-ti2/gamehub-image-2.jpeg",
+          "/img/gamehub-ti2/gamehub-image-4.jpeg",
+          "/img/gamehub-ti2/gamehub-image-5.jpeg",
         ],
       },
       {
@@ -158,6 +160,20 @@ const AllProjects = ({ language }) => {
           "/img/kitty-love-t1/kittylove-image-3.jpeg",
         ],
       },
+      {
+      id: 5,
+  title: "Build City Eco - Simulador de Gestão Urbana",
+  description:
+    "Jogo de simulação e estratégia desenvolvido na FUNEC, onde o jogador atua como prefeito de uma cidade com o desafio de equilibrar crescimento urbano, saúde pública e sustentabilidade. Através de um sistema de perguntas e respostas, o jogador toma decisões que impactam diretamente os níveis de poluição, a qualidade de vida da população e os recursos financeiros da cidade. O objetivo é construir uma cidade mais verde, consciente e eficiente.",
+  tech: ["Construct 2D", "Lógica de Programação", "Sustentabilidade"],
+
+  images: [
+    "/img/telluris/telluris-image-1.png",
+    "/img/telluris/telluris-image-2.png",
+    "/img/telluris/telluris-image-3.pgn",
+  ],
+  alt: "Interface do jogo Build City Eco mostrando problemas urbanos",
+},
     ],
     en: [
       {
@@ -199,6 +215,8 @@ const AllProjects = ({ language }) => {
           "/img/gamehub-ti2/gamehub-image-1.jpeg",
           "/img/gamehub-ti2/gamehub-image-3.jpeg",
           "/img/gamehub-ti2/gamehub-image-2.jpeg",
+          "/img/gamehub-ti2/gamehub-image-4.jpeg",
+          "/img/gamehub-ti2/gamehub-image-5.jpeg",
         ],
       },
       {
@@ -215,6 +233,23 @@ const AllProjects = ({ language }) => {
           "/img/kitty-love-t1/kittylove-image-3.jpeg",
         ],
       },
+        
+        {
+  id: 5,
+  title: "Build City Eco - Urban Management Simulator",
+  description:
+    "A simulation and strategy game developed at FUNEC, where the player acts as a city mayor with the challenge of balancing urban growth, public health, and sustainability. Through a question-and-answer system, the player makes decisions that directly impact pollution levels, the population's quality of life, and the city's financial resources. The goal is to build a greener, more conscious, and efficient city.",
+  tech: ["Construct 2D", "Programming Logic", "Sustainability"],
+  
+  images: [
+    "/img/telluris/telluris-image-1.png",
+    "/img/telluris/telluris-image-2.png",
+    "/img/telluris/telluris-image-3.png",
+
+  ],
+  alt: "Build City Eco game interface showing urban problems",
+},
+      
     ],
   };
 

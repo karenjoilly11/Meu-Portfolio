@@ -76,15 +76,19 @@ const Projects = ({ language }) => {
   const projectsData = {
     pt: [
       {
-        id: 1,
-        title: "Meu Portfólio Profissional",
-        description:
-          "Website de portfólio desenvolvido com React e Tailwind CSS para apresentar minha trajetória, projetos acadêmicos e habilidades em engenharia de software.",
-        tech: ["React", "TypeScript", "Next.js", "Tailwind CSS"],
-        github: "https://github.com/karenjoilly11/Meu-Portfolio",
-        images: ["/img/portfolio/portfolio-imagem-1.jpeg"],
-        alt: "Interface do portfólio de Karen Joilly",
-      },
+     id: 1,
+  title: "Build City Eco - Simulador de Gestão Urbana",
+  description:
+    "Jogo de simulação e estratégia desenvolvido na FUNEC, onde o jogador atua como prefeito de uma cidade com o desafio de equilibrar crescimento urbano, saúde pública e sustentabilidade. Através de um sistema de perguntas e respostas, o jogador toma decisões que impactam diretamente os níveis de poluição, a qualidade de vida da população e os recursos financeiros da cidade. O objetivo é construir uma cidade mais verde, consciente e eficiente.",
+  tech: ["Construct 2D", "Lógica de Programação", "Sustentabilidade"],
+  
+  images: [
+    "/img/telluris/telluris-image-1.png",
+    "/img/telluris/telluris-image-2.png",
+    "/img/telluris/telluris-image-3.png",
+  ],
+  alt: "Interface do jogo Build City Eco mostrando problemas urbanos",
+},
       {
         id: 2,
         title: "Martin Psicólogo - Sistema de Gestão",
@@ -120,16 +124,22 @@ const Projects = ({ language }) => {
       },
     ],
     en: [
-      {
-        id: 1,
-        title: "My Professional Portfolio",
-        description:
-          "Portfolio website developed with React and Tailwind CSS to showcase my journey, academic projects, and software engineering skills.",
-        tech: ["React", "TypeScript", "Next.js", "Tailwind CSS"],
-        github: "https://github.com/karenjoilly11/Meu-Portfolio",
-        images: ["/img/portfolio/portfolio-imagem-1.jpeg"],
-        alt: "Karen Joilly portfolio interface",
-      },
+      
+        {
+  id: 1,
+  title: "Build City Eco - Urban Management Simulator",
+  description:
+    "A simulation and strategy game developed at FUNEC, where the player acts as a city mayor with the challenge of balancing urban growth, public health, and sustainability. Through a question-and-answer system, the player makes decisions that directly impact pollution levels, the population's quality of life, and the city's financial resources. The goal is to build a greener, more conscious, and efficient city.",
+  tech: ["Construct 2D", "Programming Logic", "Sustainability"],
+  
+  images: [
+    "/img/telluris/telluris-image-1.png",
+    "/img/telluris/telluris-image-2.png",
+    "/img/telluris/telluris-image-3.png",
+  ],
+  alt: "Build City Eco game interface showing urban problems",
+},
+  
       {
         id: 2,
         title: "Martin Psicólogo - Management System",
@@ -157,6 +167,8 @@ const Projects = ({ language }) => {
           "/img/gamehub-ti2/gamehub-image-1.jpeg",
           "/img/gamehub-ti2/gamehub-image-3.jpeg",
           "/img/gamehub-ti2/gamehub-image-2.jpeg",
+          "/img/gamehub-ti2/gamehub-image-4.jpeg",
+          "/img/gamehub-ti2/gamehub-image-5.jpeg",
         ],
         alt: "GameHub gaming platform interface",
       },
