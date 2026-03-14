@@ -25,3 +25,20 @@ spline-viewer::part(watermark),
   position: absolute !important;
   z-index: -9999 !important;
 }
+/* Esconder especificamente o texto "Built with Spline" */
+spline-viewer::part(arcade),
+[class*="arcade"],
+[class*="Arcade"] {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+/* Forçar remoção da camada de créditos */
+.arcade-container,
+.spline-arcade,
+.arcade-visible {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
