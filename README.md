@@ -4,7 +4,7 @@ Website de portfólio profissional desenvolvido para apresentar informações pe
 O sistema foi desenvolvido como atividade da disciplina Laboratório de Desenvolvimento de Software, com deploy em nuvem e organização completa do repositório.
 
 # Link do Portfolio:
-Karen Joilly: https://meu-portfolio-8epu.vercel.app/
+Karen Joilly: https://karenjoilly.vercel.app/
 
 ## Alunos integrantes da equipe
 
@@ -136,6 +136,6 @@ Certifique-se de ter as seguintes ferramentas instaladas:
 
 O projeto está hospedado em:
 
-* Site publicado:
-* Hospedagem utilizada:
+* Site publicado: https://karenjoilly.vercel.app/
+* Hospedagem utilizada: Vercel
 
